@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/Controller/AcccountPasswordController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Form/ChangepasswordType.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Form/RegisterType.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/acccount/password.html.twig" charset="UTF-8" />
+  </component>
+</project>

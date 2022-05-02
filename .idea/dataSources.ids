@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - dstech@localhost" uuid="5fcd6bc7-5d98-49cf-8efd-298f2de2b6d3">
+    <database-info product="MySQL" version="5.7.36" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.47 ( Revision: fe1903b1ecb4a96a917f7ed3190d80c049b1de29 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="dstech"/>
+    <table name="category" schema="" catalog="dstech" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="doctrine_migration_versions" schema="" catalog="dstech" type="TABLE">
+      <column name="version" sqlType="VARCHAR" precision="191" scale="0" nullable="false" jdbcType="12"/>
+      <column name="executed_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="execution_time" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="version"/>
+    </table>
+    <table name="user" schema="" catalog="dstech" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" precision="180" scale="0" nullable="false" jdbcType="12"/>
+      <column name="roles" sqlType="JSON" precision="0" scale="0" nullable="false" jdbcType="1"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prenom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="UNIQ_8D93D649E7927C74" unique="true" columns="email"/>
+    </table>
+  </data-source>
+</component>
