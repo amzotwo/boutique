@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,27 @@ class Category
      */
     private $nom;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Produits::class, mappedBy="category")
+     */
+    private $produits;
+
+    public function __construct()
+    {
+        $this->produits = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity=Produits::class, mappedBy="category")
+     */
+
+    public function __toString()
+    {
+        return $this->getnom();
+    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +58,36 @@ class Category
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Produits>
+     */
+    public function getProduits(): Collection
+    {
+        return $this->produits;
+    }
+
+    public function addProduit(Produits $produit): self
+    {
+        if (!$this->produits->contains($produit)) {
+            $this->produits[] = $produit;
+            $produit->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduit(Produits $produit): self
+    {
+        if ($this->produits->removeElement($produit)) {
+            // set the owning side to null (unless already changed)
+            if ($produit->getCategory() === $this) {
+                $produit->setCategory(null);
+            }
+        }
 
         return $this;
     }

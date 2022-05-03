@@ -11,12 +11,26 @@
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_BE2DDF8C12469DE2" table="produits" schema="" catalog="dstech" columns="category_id"/>
     </table>
     <table name="doctrine_migration_versions" schema="" catalog="dstech" type="TABLE">
       <column name="version" sqlType="VARCHAR" precision="191" scale="0" nullable="false" jdbcType="12"/>
       <column name="executed_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="execution_time" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="version"/>
+    </table>
+    <table name="produits" schema="" catalog="dstech" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="slug" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="illustration" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="subtitle" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_BE2DDF8C12469DE2" columns="category_id" ref-table="category" ref-schema="" ref-catalog="dstech" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_BE2DDF8C12469DE2" unique="false" columns="category_id"/>
     </table>
     <table name="user" schema="" catalog="dstech" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
