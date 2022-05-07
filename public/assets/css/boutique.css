@@ -4,9 +4,33 @@
 .footer-custom{
     text-align: center;
     position: fixed;
-    bottom: 0;
     width: 100%;
     background-color: #dfeaff;
     padding-top: 15px;
+}
+.produit-item{
+margin-top: 50px;
+}
+.produit-item img{
+   width: 100%;
+   height: 100%;
+}
 
+.produit-item h5{
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-bottom: 1px;
+}
+.produit-item .product-subtitle{
+
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.produit-item .product-price{
+
+    font-size: 15px;
+    font-weight: bold;
+}
+.product-container{
+   margin-bottom: 150px;
 }
