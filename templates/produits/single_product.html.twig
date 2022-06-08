@@ -1,0 +1,13 @@
+
+<div class="card-deck" style="padding-top: 20px;">
+    <div class="card">
+        <a href="{{ path('app_produit',{'slug':produit.slug}) }}">
+            <img src="/uploads/{{ produit.illustration }}" alt="{{ produit.nom }}" class="card-img-top " style="height: 400px;"/>
+        </a>
+        <div class="card-body">
+            <h5 class="card-title">{{ produit.nom }}</h5>
+            <p class="card-text">{{ produit.subtitle }}</p>
+            <p class="card-text">{{ produit.price /100 }}</p>
+        </div>
+    </div>
+</div>

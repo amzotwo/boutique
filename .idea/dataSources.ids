@@ -23,6 +23,13 @@
       <foreign-key name="FK_5CECC7BEA76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="dstech" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="IDX_5CECC7BEA76ED395" unique="false" columns="user_id"/>
     </table>
+    <table name="carrier" schema="" catalog="dstech" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
     <table name="category" schema="" catalog="dstech" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
@@ -35,6 +42,40 @@
       <column name="execution_time" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="version"/>
     </table>
+    <table name="header" schema="" catalog="dstech" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="content" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="btn_url" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="illustration" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="btn_title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="order" schema="" catalog="dstech" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" remarks="KERDMlR5cGU6ZGF0ZXRpbWVfaW1tdXRhYmxlKQ=="/>
+      <column name="carrier_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="carrier_price" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="delevry" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="is_paid" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="state" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_F5299398A76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="dstech" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_845CA2C1BFCDF877" table="order_details" schema="" catalog="dstech" columns="my_order_id"/>
+      <index name="IDX_F5299398A76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="order_details" schema="" catalog="dstech" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="my_order_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="product" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="quantite" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="total" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_845CA2C1BFCDF877" columns="my_order_id" ref-table="order" ref-schema="" ref-catalog="dstech" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_845CA2C1BFCDF877" unique="false" columns="my_order_id"/>
+    </table>
     <table name="produits" schema="" catalog="dstech" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
@@ -44,6 +85,7 @@
       <column name="subtitle" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="description" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
       <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="is_best" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_BE2DDF8C12469DE2" columns="category_id" ref-table="category" ref-schema="" ref-catalog="dstech" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="IDX_BE2DDF8C12469DE2" unique="false" columns="category_id"/>
@@ -57,6 +99,7 @@
       <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_5CECC7BEA76ED395" table="adress" schema="" catalog="dstech" columns="user_id"/>
+      <exported-key name="FK_F5299398A76ED395" table="order" schema="" catalog="dstech" columns="user_id"/>
       <index name="UNIQ_8D93D649E7927C74" unique="true" columns="email"/>
     </table>
   </data-source>

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma Commande {% endblock %}
+
+{% block content %}
+    <h1>Ma commande</h1>
+    <a href="{{ path('app_acccount_order') }}">  - Retour </a><br/>
+
+    <hr>
+   <strong>Référence de ma commande:  </strong> {{ order.id }} <br/>
+   <strong>Commande passée le :</strong> {{ order.createdAt|date('d/m/y') }} <br/>
+   <strong>Mode de livraison choisi : </strong>  {{ order.carriername }}
+    <hr>
+    <strong>Details de la commande </strong>
+
+    <table class="table table-striped mt-3 ">
+        <thead>
+        <tr>
+            <th scope="col">Produit</th>
+            <th scope="col">Qte</th>
+            <th scope="col">PU</th>
+            <th scope="col">Total</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in order.orderDetails  %}
+            <tr>
+                <td>{{ product.product }}</td>
+                <td>x {{ product.quantite  }}</td>
+                <td>{{ product.price  }}</td>
+                <td>{{ (product.total ) }}</td>
+            </tr>
+        {% endfor  %}
+        </tbody>
+    </table>
+
+    <div class="text-right">
+        <strong>Sous-Total: </strong>{{ (order.getTotal ) }} FCFA<br/>
+        <strong>Livraision: </strong>{{ (order.carrierprice ) }} FCFA  <br/>
+        <strong>Total General: </strong>{{ (order.getTotal ) +  (order.carrierprice ) }} FCFA
+    </div>
+{% endblock %}

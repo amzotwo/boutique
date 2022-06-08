@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Valider ma commande!{% endblock %}
+
+{% block content %}
+    <h2>Je passe ma commande</h2>
+    <p>Choisissez vos preferences avant de passer votre commande sur la boutique</p>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Mon adresse de livraison</strong> <br/>
+
+            <div class="form-check mt-2">
+                {{ delevry|raw }}
+            </div>
+            <hr>
+            <strong>Mon transporteur</strong>
+           <div class="form-check">
+               {{ carrier.name }}<br/>
+               {{ carrier.description }}<br/>
+               {{ carrier.price /100 }}<br/>
+           </div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-center">
+                <b class="">Recap de ma commande</b>
+            </div>
+            {% set total = null %}
+            {% for produit in cart %}
+                <div class="order-summary">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="/uploads/{{ produit.produit.illustration  }}" height="45px">
+                        </div>
+                        <div class="col-8 my-auto">
+                            {{ produit.produit.nom}} <br/>
+                            <small>
+                                {{ produit.produit.subtitle }}
+                                <br/>
+                                x {{ produit.quantite }}
+                            </small>
+                        </div>
+                        <div class="col-2 my-auto ">
+                            {{ ((produit.produit.price * produit.quantite)/100)  }}
+                        </div>
+                    </div>
+                    {% set total =total + (produit.produit.price * produit.quantite) %}
+                </div>
+            {% endfor %}
+
+            <hr>
+            <strong>Sous-total : </strong> {{ (total/100)  }} FCFA <br/>
+            <strong>Livraison : </strong>   {{ (carrier.price)  }} FCFA
+            <hr>
+            <strong>Total :</strong> {{ (total/100)+ (carrier.price)  }} FCFA
+            <a href="" class="btn btn-success btn-block mt-3">Payer |{{ (total/100)+ (carrier.price)  }} FCFA</a>
+        </div>
+
+    </div>
+{% endblock %}

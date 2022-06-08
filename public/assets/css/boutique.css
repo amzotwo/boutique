@@ -39,3 +39,32 @@ margin-top: 50px;
    height: 20px;
     padding-left: 20px;
 }
+.block-small
+{
+    max-width: 600px;
+    margin: 0 auto;
+}
+.form-check{
+    background-color: #dfeaff;
+    padding: 20px;
+    margin-top: 7px;
+}
+.col-form-label{
+    font-weight: bold;
+}
+.order-summary{
+    background-color: #dfeaff;
+    padding: 20px;
+    margin-top: 7px;
+}
+
+.account_item{
+    background-color: #f1f2f6;
+    padding: 70px;
+}
+.account_item a{
+  text-transform: uppercase;
+    font-size: 14px;
+    color: #57686f;
+    font-weight: bold;
+}

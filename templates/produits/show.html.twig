@@ -6,7 +6,7 @@
 
     <div class="row" >
        <div class="col-md-5">
-            <img src="/uploads/{{ produit.illustration }}" alt="{{ produit.nom }}" class="img-fluid" />
+            <img src="/uploads/{{ produit.illustration }}" alt="{{ produit.nom }}" class="img-fluid"  />
        </div>
         <div class="col-md-7 my-auto">
             <h3>{{ produit.nom}}</h3>
@@ -20,7 +20,16 @@
 
         </div>
     </div>
+    <hr>
 
-
+    <h3>Nos Meilleures ventes</h3>
+    <p>Decouvrez les articles les plus vendus.</p>
+    <div class="row">
+        {% for produit in Produits %}
+            <div class="col-md-3">
+                {% include'produits/single_product.html.twig' %}
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

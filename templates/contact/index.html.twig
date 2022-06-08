@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous Contacter!{% endblock %}
+
+{% block content %}
+        <h2>Nous contacter</h2>
+        <p>N'hesitez pas à prendre contact avec notre équipe, nous vous répondrons dans les meilleuts délais</p>
+
+
+        {% for message in app.flashes('notice') %}
+                <div class="alert alert-info">{{ message }}</div>
+        {% endfor %}
+
+        <div class="row">
+                <div class="col-md-8">
+                        {{ form(form) }}
+                </div>
+                <div class="col-md-4">
+                        <strong>Darou Salam Technologies</strong>
+                        <hr>
+                        77777777 <br/>
+                        front de terre en face gendarmerie  <br/>
+                        contact@dstechnologies.com
+                </div>
+        </div>
+
+{% endblock %}

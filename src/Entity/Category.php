@@ -24,8 +24,14 @@ class Category
      */
     private $nom;
 
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
+
     /**
-     * @ORM\OneToMany(targetEntity=Produits::class, mappedBy="category")
+     *
      */
     private $produits;
 
@@ -35,13 +41,8 @@ class Category
     }
 
     /**
-     * @ORM\OneToMany(targetEntity=Produits::class, mappedBy="category")
-     */
 
-    public function __toString()
-    {
-        return $this->getnom();
-    }
+     */
 
 
 

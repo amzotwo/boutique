@@ -78,6 +78,12 @@ class Adress
         return $this->user;
     }
 
+    public function __toString() {
+
+    return $this->getName().'[br]'.$this->getAdress().'[br]'.$this->getCity().'[br]'.$this->getConutry();
+
+    }
+
     public function setUser(?User $user): self
     {
         $this->user = $user;
